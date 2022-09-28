@@ -129,7 +129,8 @@ objects += blargg_ntsc_snes.$(DYLIB) \
 			  upscale_256x_320x240.$(DYLIB) \
 			  picoscale_256x_320x240.$(DYLIB) \
 			  upscale_240x160_320x240.$(DYLIB) \
-			  upscale_mix_240x160_320x240.$(DYLIB)
+			  upscale_mix_240x160_320x240.$(DYLIB) \
+			  upscale_x192_320x240.$(DYLIB)
 
 all: build;
 

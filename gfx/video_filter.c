@@ -295,6 +295,7 @@ extern const struct softfilter_implementation *upscale_256x_320x240_get_implemen
 extern const struct softfilter_implementation *picoscale_256x_320x240_get_implementation(softfilter_simd_mask_t simd);
 extern const struct softfilter_implementation *upscale_240x160_320x240_get_implementation(softfilter_simd_mask_t simd);
 extern const struct softfilter_implementation *upscale_mix_240x160_320x240_get_implementation(softfilter_simd_mask_t simd);
+extern const struct softfilter_implementation *upscale_x192_320x240_get_implementation(softfilter_simd_mask_t simd);
 
 static const softfilter_get_implementation_t soft_plugs_builtin[] = {
    blargg_ntsc_snes_get_implementation,
@@ -323,6 +324,7 @@ static const softfilter_get_implementation_t soft_plugs_builtin[] = {
    picoscale_256x_320x240_get_implementation,
    upscale_240x160_320x240_get_implementation,
    upscale_mix_240x160_320x240_get_implementation,
+   upscale_x192_320x240_get_implementation,
 };
 
 static bool append_softfilter_plugs(rarch_softfilter_t *filt,
