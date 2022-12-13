@@ -1249,6 +1249,10 @@ static void sdl_rs90_gfx_set_nonblock_state(void *data, bool toggle,
        * sdl_rs90_set_output() *twice*, setting the dimensions
        * to an arbitrary value before restoring the actual
        * desired width/height */
+#if defined(MIYOO)
+      sdl_rs90_set_output(vid,
+            current_width, current_height, vid->rgb32);	
+#else
       sdl_rs90_set_output(vid,
             current_width,
             (current_height > 4) ? (current_height - 2) : 16,
@@ -1256,6 +1260,7 @@ static void sdl_rs90_gfx_set_nonblock_state(void *data, bool toggle,
 
       sdl_rs90_set_output(vid,
             current_width, current_height, vid->rgb32);
+#endif
    }
 }
 
