@@ -3746,6 +3746,13 @@ bool command_event(enum event_command cmd, void *data)
          return false;
 #endif
       case CMD_EVENT_FULLSCREEN_TOGGLE:
+#ifdef HAVE_DINGUX_FS_TOGGLE
+         settings->bools.video_dingux_ipu_keep_aspect = !settings->bools.video_dingux_ipu_keep_aspect;
+         if (!settings->bools.video_dingux_ipu_keep_aspect) {
+            settings->bools.video_scale_integer = !settings->bools.video_scale_integer;
+         }
+         video_driver_apply_state_changes();
+#else
          {
             audio_driver_state_t
                *audio_st              = audio_state_get_ptr();
@@ -3797,6 +3804,7 @@ bool command_event(enum event_command cmd, void *data)
             if (userdata && *userdata == true)
                video_driver_cached_frame();
          }
+#endif
          break;
       case CMD_EVENT_DISK_APPEND_IMAGE:
          {
