@@ -5794,7 +5794,7 @@ static void input_keys_pressed(
    /* Ignore hotkey block delay when menu toggle and hotkey enabler share the same key */
    if (     !any_pressed
          && !(input_st->flags & INP_FLAG_WAIT_INPUT_RELEASE)
-         && binds[port][RARCH_MENU_TOGGLE].key == binds[port][RARCH_ENABLE_HOTKEY].key)
+         && binds[port][RARCH_MENU_TOGGLE].key)
    {
       i = RARCH_MENU_TOGGLE;
 
