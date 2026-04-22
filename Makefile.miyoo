@@ -121,16 +121,18 @@ HAVE_SSL = 1
 HAVE_SOCKET_LEGACY = 1
 OS = Linux
 TARGET = retroarch
+HAVE_ACCESSIBILITY=1
+HAVE_OSS=1
 
 OBJ :=
 LINK := $(CXX)
 DEF_FLAGS := -march=armv5te -mtune=arm926ej-s -fomit-frame-pointer
 DEF_FLAGS += -ffunction-sections -fdata-sections
 DEF_FLAGS += -I. -Ideps -Ideps/stb -DMIYOO=1 -DMIYOO -DDINGUX -MMD
-DEF_FLAGS += -Wall -Wno-unused-variable -flto
+DEF_FLAGS += -Wall -Wno-unused-variable
 DEF_FLAGS += -std=gnu99 -D_GNU_SOURCE
 LIBS := -ldl -lz -lrt -pthread -lasound
-CFLAGS := -Ofast -fdata-sections -ffunction-sections -fsingle-precision-constant -fno-PIC -flto
+CFLAGS := -Ofast -fdata-sections -ffunction-sections -fsingle-precision-constant -fno-PIC
 CXXFLAGS := -fno-exceptions -fno-rtti -std=c++11 -D__STDC_CONSTANT_MACROS
 ASFLAGS :=
 LDFLAGS := -Wl,--gc-sections
@@ -140,6 +142,7 @@ DEFINES := -DRARCH_INTERNAL -D_FILE_OFFSET_BITS=64 -UHAVE_STATIC_DUMMY
 DEFINES += -DHAVE_C99=1 -DHAVE_CXX=1
 DEFINES += -DHAVE_GETOPT_LONG=1 -DHAVE_STRCASESTR=1 -DHAVE_DYNAMIC=1 -DHAVE_ONLINE_UPDATER -DHAVE_UPDATE_ASSETS -DHAVE_UPDATE_CORES -DHAVE_UPDATE_CORE_INFO
 DEFINES += -DHAVE_FILTERS_BUILTIN -DHAVE_ALSA
+DEFINES += -DHAVE_OSS=1
 
 SDL_DINGUX_CFLAGS := $(shell $(GCW0_SDL_CONFIG) --cflags)
 SDL_DINGUX_LIBS := $(shell $(GCW0_SDL_CONFIG) --libs)
