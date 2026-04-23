@@ -4153,7 +4153,8 @@ void video_driver_frame(const void *data, unsigned width,
             pitch, runloop_idle);
 
 #ifdef HAVE_VIDEO_FILTER
-   if (render_frame && data && video_st->state_filter)
+   if ((video_st->poke && video_st->poke->get_current_software_framebuffer)
+      && render_frame && data && video_st->state_filter)
    {
       unsigned output_width                             = 0;
       unsigned output_height                            = 0;

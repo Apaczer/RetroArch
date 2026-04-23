@@ -1195,6 +1195,17 @@ static void sdl_rs90_set_texture_enable(void *data, bool state, bool full_screen
    vid->menu_active = state;
 }
 
+static bool sdl_rs90_active_frame(void *data,
+         struct retro_framebuffer *framebuffer)
+{
+   sdl_rs90_video_t *vid = (sdl_rs90_video_t*)data;
+
+   if (unlikely(!vid))
+      return false;
+
+   return true;
+}
+
 static void sdl_rs90_set_texture_frame(void *data, const void *frame, bool rgb32,
       unsigned width, unsigned height, float alpha)
 {
@@ -1408,7 +1419,7 @@ static const video_poke_interface_t sdl_rs90_poke_interface = {
    NULL, /* show_mouse */
    NULL, /* grab_mouse_toggle */
    NULL, /* get_current_shader */
-   NULL, /* get_current_software_framebuffer */
+   sdl_rs90_active_frame,
    NULL, /* get_hw_render_interface */
    NULL, /* set_hdr_max_nits */
    NULL, /* set_hdr_paper_white_nits */
