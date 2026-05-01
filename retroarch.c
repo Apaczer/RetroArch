@@ -3958,9 +3958,6 @@ bool command_event(enum event_command cmd, void *data)
             menu_pause_libretro      = settings->bools.menu_pause_libretro;
 #endif
 
-            if (audio_enable_menu || !menu_pause_libretro)
-               return false;
-
             if (!audio_driver_stop())
                return false;
          }
